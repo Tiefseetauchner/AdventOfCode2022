@@ -24,8 +24,8 @@ abstract class Day {
         this.topLevelDiv.appendChild(dayDiv);
 
         console.log(this.inputElementPart1);
-        this.inputElementPart1.addEventListener("change", () => this.ExecPartOne(), false);
-        this.inputElementPart2.addEventListener("change", () => this.ExecPartTwo(), false);
+        this.inputElementPart1.addEventListener("keypress", () => this.ExecPartOne(), false);
+        this.inputElementPart2.addEventListener("keypress", () => this.ExecPartTwo(), false);
     }
 
     abstract ExecPartOne(): void;
