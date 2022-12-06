@@ -5,46 +5,47 @@ abstract class Day {
     outputDivPart1: HTMLElement;
     outputDivPart2: HTMLElement;
     currentPart: number = 0;
-
-    abstract dayNum: number;
+    dayNum: number = 0;
+    dayHeader: HTMLHeadingElement;
 
     constructor(topLevelDiv: HTMLElement) {
         this.topLevelDiv = topLevelDiv;
 
         let dayDiv = document.createElement("div");
+
+        this.dayHeader = document.createElement("h2");
+
+        let part1Header = document.createElement("h3");
+        part1Header.innerText = `Part 1`;
+        let part2Header = document.createElement("h3");
+        part2Header.innerText = `Part 2`;
+        
         this.inputElementPart1 = document.createElement("textArea") as HTMLTextAreaElement;
-        console.log(this.inputElementPart1)
+        this.inputElementPart1.classList.add("form-input");
         this.inputElementPart2 = document.createElement("textArea") as HTMLTextAreaElement;
+        this.inputElementPart2.classList.add("form-input");
         this.outputDivPart1 = document.createElement("div");
         this.outputDivPart2 = document.createElement("div");
 
+        dayDiv.appendChild(this.dayHeader);
+        dayDiv.appendChild(part1Header);
         dayDiv.appendChild(this.inputElementPart1);
         dayDiv.appendChild(this.outputDivPart1);
+        dayDiv.appendChild(part2Header);
         dayDiv.appendChild(this.inputElementPart2);
         dayDiv.appendChild(this.outputDivPart2);
 
         this.topLevelDiv.appendChild(dayDiv);
 
         console.log(this.inputElementPart1);
-        this.inputElementPart1.addEventListener("keypress", () => this.ExecPartOne(), false);
-        this.inputElementPart2.addEventListener("keypress", () => this.ExecPartTwo(), false);
+        this.inputElementPart2.addEventListener("change", () => this.WriteOutput(this.ExecPartOne(), this.outputDivPart1), false);
+        this.inputElementPart2.addEventListener("change", () => this.WriteOutput(this.ExecPartTwo(), this.outputDivPart2), false);
     }
 
-    WriteOutput(result: any): void {
-        switch (this.currentPart) {
-            case 1:
-                this.outputDivPart1.innerHTML = `<p>Result Day ${this.dayNum} Part ${this.currentPart}: <kbd>${result}</kbd></p>`;
-                break;
-            case 2:
-                this.outputDivPart2.innerHTML = `<p>Result Day ${this.dayNum} Part ${this.currentPart}: <kbd>${result}</kbd></p>`;
-                break;
-            default:
-                let errorDiv = document.createElement("div");
-                errorDiv.innerText = `<p class="">Couldn't figure out where to put this, regardless, here is your output: <kbd>${result}</kbd></p>`;
-                this.inputElementPart1.parentNode?.appendChild(errorDiv)
-        }
+    WriteOutput(result: any, outputDiv: HTMLElement): void {
+        outputDiv.innerHTML = `<p>Result: <kbd>${result}</kbd></p>`;
     }
 
-    abstract ExecPartOne(): void;
-    abstract ExecPartTwo(): void;
+    abstract ExecPartOne(): any;
+    abstract ExecPartTwo(): any;
 }

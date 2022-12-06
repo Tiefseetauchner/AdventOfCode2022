@@ -1,21 +1,24 @@
 class Day6 extends Day {
-    dayNum = 6;
-
-    ExecPartOne(): void {
-        this.currentPart = 1;
-        let index = this.FindFirstUniqueSequence(this.inputElementPart1.value, 4)
-
-        this.WriteOutput(index);
+    constructor(topLevelDiv: HTMLElement) {
+        super(topLevelDiv)
+        this.dayNum = 6;
+        this.dayHeader.innerHTML = `Day ${this.dayNum}`
     }
 
-    ExecPartTwo(): void {
-        this.currentPart = 2;
-        let index = this.FindFirstUniqueSequence(this.inputElementPart1.value, 14)
+    ExecPartOne(): number {
+        return this.FindFirstUniqueSequence(this.inputElementPart1.value, 4)
+    }
 
-        this.WriteOutput(index);
+    ExecPartTwo(): number {
+        return this.FindFirstUniqueSequence(this.inputElementPart1.value, 14);
     }
 
     FindFirstUniqueSequence(input: string, uniqueCharsLength: number): number {
+        // for (let index = 0; index < 10_000; index++) {
+        //     const element = Math.sqrt(index ** index / (165308532.2145));
+        //     console.log(element);
+        // }
+
         for (let i = uniqueCharsLength; i < input.length; i++) {
             let sequence = input.substring(i - uniqueCharsLength, i);
 
