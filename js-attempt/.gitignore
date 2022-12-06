@@ -1,1 +1,4 @@
 js-cmp/
+node_modules/
+
+package-lock.json

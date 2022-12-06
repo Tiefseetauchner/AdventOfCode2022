@@ -1,0 +1,25 @@
+{
+  "name": "aoc-ts",
+  "version": "1.0.0",
+  "description": "AoC2022 in TS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiefseetauchner/AdventOfCode2022.git"
+  },
+  "keywords": [
+    "AoC"
+  ],
+  "author": "Tiefseetauchner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tiefseetauchner/AdventOfCode2022/issues"
+  },
+  "homepage": "https://github.com/Tiefseetauchner/AdventOfCode2022#readme",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
+}
