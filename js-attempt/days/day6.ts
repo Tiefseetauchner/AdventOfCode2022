@@ -6,11 +6,11 @@ class Day6 extends Day {
     }
 
     ExecPartOne(): number {
-        return this.FindFirstUniqueSequence(this.inputElementPart1.value, 4)
+        return this.FindFirstUniqueSequence(this.GetInput1Value(), 4)
     }
 
     ExecPartTwo(): number {
-        return this.FindFirstUniqueSequence(this.inputElementPart1.value, 14);
+        return this.FindFirstUniqueSequence(this.GetInput2Value(), 14);
     }
 
     FindFirstUniqueSequence(input: string, uniqueCharsLength: number): number {

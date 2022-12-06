@@ -8,6 +8,9 @@ abstract class Day {
     dayNum: number = 0;
     dayHeader: HTMLHeadingElement;
 
+    GetInput1Value = () => this.inputElementPart1.value;
+    GetInput2Value = () => this.inputElementPart1.value;
+
     constructor(topLevelDiv: HTMLElement) {
         this.topLevelDiv = topLevelDiv;
 
@@ -38,7 +41,7 @@ abstract class Day {
         this.topLevelDiv.appendChild(dayDiv);
 
         console.log(this.inputElementPart1);
-        this.inputElementPart2.addEventListener("change", () => this.WriteOutput(this.ExecPartOne(), this.outputDivPart1), false);
+        this.inputElementPart1.addEventListener("change", () => this.WriteOutput(this.ExecPartOne(), this.outputDivPart1), false);
         this.inputElementPart2.addEventListener("change", () => this.WriteOutput(this.ExecPartTwo(), this.outputDivPart2), false);
     }
 

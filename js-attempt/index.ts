@@ -1,5 +1,6 @@
 let topLevelDiv = document.getElementById("days") ?? getFallbackTopLevelDiv();
 
+new Day5(topLevelDiv);
 new Day6(topLevelDiv);
 
 // ---- Helpers ----
