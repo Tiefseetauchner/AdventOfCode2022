@@ -1,10 +1,12 @@
 abstract class Day {
-    topLevelDiv: HTMLElement
-    inputElementPart1: HTMLTextAreaElement
-    inputElementPart2: HTMLTextAreaElement
-    outputDivPart1: HTMLElement
-    outputDivPart2: HTMLElement
-    abstract dayNum: number
+    topLevelDiv: HTMLElement;
+    inputElementPart1: HTMLTextAreaElement;
+    inputElementPart2: HTMLTextAreaElement;
+    outputDivPart1: HTMLElement;
+    outputDivPart2: HTMLElement;
+    currentPart: number = 0;
+
+    abstract dayNum: number;
 
     constructor(topLevelDiv: HTMLElement) {
         this.topLevelDiv = topLevelDiv;
@@ -26,6 +28,21 @@ abstract class Day {
         console.log(this.inputElementPart1);
         this.inputElementPart1.addEventListener("keypress", () => this.ExecPartOne(), false);
         this.inputElementPart2.addEventListener("keypress", () => this.ExecPartTwo(), false);
+    }
+
+    WriteOutput(result: any): void {
+        switch (this.currentPart) {
+            case 1:
+                this.outputDivPart1.innerHTML = `<p>Result Day ${this.dayNum} Part ${this.currentPart}: <kbd>${result}</kbd></p>`;
+                break;
+            case 2:
+                this.outputDivPart2.innerHTML = `<p>Result Day ${this.dayNum} Part ${this.currentPart}: <kbd>${result}</kbd></p>`;
+                break;
+            default:
+                let errorDiv = document.createElement("div");
+                errorDiv.innerText = `<p class="">Couldn't figure out where to put this, regardless, here is your output: <kbd>${result}</kbd></p>`;
+                this.inputElementPart1.parentNode?.appendChild(errorDiv)
+        }
     }
 
     abstract ExecPartOne(): void;

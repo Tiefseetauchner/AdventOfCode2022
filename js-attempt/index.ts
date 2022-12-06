@@ -4,7 +4,7 @@ new Day6(topLevelDiv);
 
 // ---- Helpers ----
 
-function getFallbackTopLevelDiv() : HTMLElement {
+function getFallbackTopLevelDiv(): HTMLElement {
   let fallbackTopLevelDiv = document.createElement("div");
 
   fallbackTopLevelDiv.id += "days";

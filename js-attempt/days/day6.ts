@@ -1,37 +1,39 @@
 class Day6 extends Day {
     dayNum = 6;
 
-    ExecPartOne () : void {
-        const input = this.inputElementPart1.value;
+    ExecPartOne(): void {
+        this.currentPart = 1;
+        let index = this.FindFirstUniqueSequence(this.inputElementPart1.value, 4)
 
-        let index = 4;
-        while (index < input.length) {
-            let sequence = input.substring(index - 4, index);
-            
-            if (this.SequenceIsSoP(sequence)) {
-                break;
-            }
-
-            index ++;
-        }
-
-        this.outputDivPart1.innerHTML = `Result Day ${this.dayNum} Part 1: ` + index;
+        this.WriteOutput(index);
     }
 
-    ExecPartTwo () : void {
-        
+    ExecPartTwo(): void {
+        this.currentPart = 2;
+        let index = this.FindFirstUniqueSequence(this.inputElementPart1.value, 14)
+
+        this.WriteOutput(index);
     }
 
-    SequenceIsSoP(sequence: string): boolean {
-        let sequenceIsSop = true;
-        
-        for (let i = 0; i < 3; i++) {
-            let searchChar = sequence.charAt(i);
-            if (sequence.indexOf(searchChar, i + 1) > 0) {
-                sequenceIsSop = false;
+    FindFirstUniqueSequence(input: string, uniqueCharsLength: number): number {
+        for (let i = uniqueCharsLength; i < input.length; i++) {
+            let sequence = input.substring(i - uniqueCharsLength, i);
+
+            if (this.SequenceConsistsOfUniqueChars(sequence, uniqueCharsLength)) {
+                return i;
             }
         }
 
-        return sequenceIsSop;
+        return -1;
+    }
+
+    SequenceConsistsOfUniqueChars(sequence: string, uniqueCharsLength: number): boolean {
+        for (let i = 0; i < uniqueCharsLength - 1; i++) {
+            if (sequence.includes(sequence[i], i + 1)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
